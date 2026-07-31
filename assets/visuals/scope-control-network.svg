@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="t d">
+  <title id="t">Illustrative survey control and scope diagram</title>
+  <desc id="d">A technical illustration showing reference control, observations, checks, site extent and deliverable flow.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#d8e1df" stroke-width="1"/>
+    </pattern>
+    <pattern id="minor" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M8 0H0V8" fill="none" stroke="#eef2f0" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#071f32" flood-opacity=".13"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" rx="24" fill="#fbfcf9"/>
+  <rect x="28" y="28" width="1144" height="704" rx="18" fill="url(#minor)"/>
+  <rect x="28" y="28" width="1144" height="704" rx="18" fill="url(#grid)"/>
+
+  <g font-family="Arial,Helvetica,sans-serif" fill="#071f32">
+    <text x="72" y="84" font-size="20" font-weight="700" letter-spacing="3">SURVEY SCOPE LOGIC</text>
+    <text x="72" y="114" font-size="13" fill="#657982">ILLUSTRATIVE TECHNICAL DIAGRAM — NOT A PROJECT RECORD</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="160" width="250" height="150" rx="12" fill="#071f32"/>
+    <text x="96" y="196" font-family="Arial" font-size="12" font-weight="700" fill="#ffc75a" letter-spacing="2">01 / PURPOSE</text>
+    <text x="96" y="233" font-family="Georgia" font-size="27" fill="#fff">Decision first</text>
+    <text x="96" y="264" font-family="Arial" font-size="14" fill="#c8d7de">What must be identified,</text>
+    <text x="96" y="286" font-family="Arial" font-size="14" fill="#c8d7de">designed, set out or analysed?</text>
+
+    <rect x="70" y="450" width="250" height="150" rx="12" fill="#fff" stroke="#cbd7d6"/>
+    <text x="96" y="486" font-family="Arial" font-size="12" font-weight="700" fill="#d04d37" letter-spacing="2">04 / DELIVERABLE</text>
+    <text x="96" y="523" font-family="Georgia" font-size="27" fill="#071f32">Use-ready output</text>
+    <text x="96" y="554" font-family="Arial" font-size="14" fill="#5f7078">Plan, coordinates, CAD, GIS,</text>
+    <text x="96" y="576" font-family="Arial" font-size="14" fill="#5f7078">report or an agreed combination.</text>
+  </g>
+
+  <g>
+    <path d="M405 170 760 142 986 264 904 582 540 626 382 446Z" fill="#d04d37" fill-opacity=".08" stroke="#d04d37" stroke-width="4" stroke-dasharray="14 10"/>
+    <text x="590" y="370" font-family="Georgia" font-size="42" fill="#071f32" text-anchor="middle">SITE / AREA OF INTEREST</text>
+    <text x="590" y="405" font-family="Arial" font-size="14" fill="#5f7078" text-anchor="middle" letter-spacing="2">EXTENT · ACCESS · TERRAIN · DETAIL</text>
+  </g>
+
+  <g stroke="#0b304b" stroke-width="3" fill="none">
+    <path d="M438 228 865 215 944 510 510 562Z"/>
+    <path d="M438 228 944 510" stroke-dasharray="8 8"/>
+    <path d="M865 215 510 562" stroke-dasharray="8 8"/>
+    <path d="M320 235 438 228"/>
+    <path d="M320 525 510 562"/>
+  </g>
+
+  <g font-family="Arial" font-size="12" font-weight="700">
+    <g transform="translate(438 228)"><circle r="17" fill="#fff" stroke="#071f32" stroke-width="4"/><circle r="5" fill="#d04d37"/><text x="-32" y="-28" fill="#071f32">CONTROL A</text></g>
+    <g transform="translate(865 215)"><circle r="17" fill="#fff" stroke="#071f32" stroke-width="4"/><circle r="5" fill="#d04d37"/><text x="-28" y="-28" fill="#071f32">CONTROL B</text></g>
+    <g transform="translate(944 510)"><circle r="17" fill="#fff" stroke="#071f32" stroke-width="4"/><circle r="5" fill="#d04d37"/><text x="-12" y="36" fill="#071f32">CHECK</text></g>
+    <g transform="translate(510 562)"><circle r="17" fill="#fff" stroke="#071f32" stroke-width="4"/><circle r="5" fill="#d04d37"/><text x="-34" y="38" fill="#071f32">CONTROL C</text></g>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="868" y="82" width="260" height="126" rx="12" fill="#fff" stroke="#cbd7d6"/>
+    <text x="894" y="118" font-family="Arial" font-size="12" font-weight="700" fill="#d04d37" letter-spacing="2">02 / REFERENCE</text>
+    <text x="894" y="153" font-family="Georgia" font-size="25" fill="#071f32">Position &amp; control</text>
+    <text x="894" y="181" font-family="Arial" font-size="13" fill="#5f7078">Datum, coordinates, levels and checks.</text>
+
+    <rect x="870" y="586" width="258" height="114" rx="12" fill="#071f32"/>
+    <text x="896" y="622" font-family="Arial" font-size="12" font-weight="700" fill="#ffc75a" letter-spacing="2">03 / REQUIREMENT</text>
+    <text x="896" y="657" font-family="Georgia" font-size="25" fill="#fff">Detail &amp; tolerance</text>
+    <text x="896" y="683" font-family="Arial" font-size="13" fill="#c8d7de">Fit the method to the intended use.</text>
+  </g>
+
+  <g stroke="#d04d37" stroke-width="3" fill="none" marker-end="url(#none)">
+    <path d="M998 208 908 247"/>
+    <path d="M944 586 917 539"/>
+  </g>
+
+  <g font-family="Arial" font-size="12" fill="#5f7078">
+    <text x="72" y="690">A useful scope makes purpose, extent, reference, requirement and output explicit before mobilisation.</text>
+    <text x="1030" y="690" text-anchor="end">HAG / TECHNICAL NOTE 01</text>
+  </g>
+</svg>
