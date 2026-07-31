@@ -39,6 +39,7 @@
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></symbol>
   <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6M11 8v6"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
 </svg>
 
 <div class="utility-bar">
@@ -63,6 +64,11 @@
       <a href="#deliverables">Deliverables</a>
       <a href="#company">Company</a>
       <a href="#contact">Contact</a>
+      <div class="mobile-nav-actions">
+        <a class="button button-primary" href="#brief">Request a quote</a>
+        <a class="button button-whatsapp wa-link" href="#">WhatsApp</a>
+        <a class="button button-secondary" href="tel:+2348034784082">Call surveyor</a>
+      </div>
     </nav>
     <a class="button button-primary header-cta" href="#brief">Request a survey quote</a>
   </div>
@@ -145,6 +151,7 @@
         <button class="text-link service-request" data-service="Land and spatial advisory">Request this service <svg class="icon"><use href="#i-arrow"/></svg></button>
       </article>
     </div>
+    <p class="mobile-swipe-note">Swipe to compare services</p>
   </div>
 </section>
 
@@ -185,6 +192,7 @@
       <figure class="image-card"><img src="assets/img/aerial-development.webp" alt="Aerial view showing buildings, roads and land features" width="1600" height="900" loading="eager" decoding="async"><figcaption><b>Spatial context</b><span>Sites, corridors, assets and surrounding features.</span></figcaption></figure>
       <figure class="image-card"><img src="assets/img/gis-workflow.webp" alt="Digital mapping and GIS workflow" width="1200" height="800" loading="eager" decoding="async"><figcaption><b>Data and mapping</b><span>Plans, layers, analysis and export-ready files.</span></figcaption></figure>
     </div>
+    <p class="mobile-swipe-note">Swipe to view field, aerial and mapping examples</p>
   </div>
 </section>
 
@@ -251,20 +259,81 @@
       <div><span class="eyebrow dark">Request a survey quote</span><h2>Send a useful project brief.</h2></div>
       <p>Complete the essentials below. A structured message will be prepared for WhatsApp.</p>
     </div>
+
+    <div class="brief-guide" aria-labelledby="brief-guide-title">
+      <div class="guide-video-wrap">
+        <video id="briefGuideVideo" controls preload="metadata" playsinline poster="assets/media/hambare-form-guide-poster.webp">
+          <source src="assets/media/hambare-form-guide.mp4" type="video/mp4">
+          <source src="assets/media/hambare-form-guide.webm" type="video/webm">
+          <track kind="captions" src="assets/media/hambare-form-guide.en.vtt" srclang="en" label="English" default>
+          Your browser does not support embedded video. <a href="assets/media/hambare-form-guide.mp4">Download the guide</a>.
+        </video>
+      </div>
+      <div class="guide-copy">
+        <span class="eyebrow dark">About 75 seconds</span>
+        <h3 id="brief-guide-title">How to complete the survey brief</h3>
+        <p>The video uses sample information and shows the complete route from selecting a service to opening the prepared WhatsApp message.</p>
+        <ol class="guide-steps">
+          <li><b>Describe the project.</b><span>Choose the closest service, location and stage.</span></li>
+          <li><b>State the output.</b><span>Add available records, timing and access information.</span></li>
+          <li><b>Prepare the message.</b><span>Review the generated brief, then open WhatsApp and attach documents.</span></li>
+        </ol>
+        <div class="guide-links">
+          <a href="#scopeForm" class="text-link">Go to the form <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a href="assets/docs/Hambare-Survey-Project-Brief-Checklist.docx" class="text-link" download>Download the checklist <svg class="icon"><use href="#i-download"/></svg></a>
+        </div>
+        <details class="video-transcript">
+          <summary>Read the video transcript</summary>
+          <p>Choose the survey service that most closely matches the decision you need to make. Select “Not sure yet” when the correct service is unclear. Enter the project location, stage and approximate size. Add the output you expect, any records already available, your preferred timing and site-access information. Explain what the survey will support, then provide your name and WhatsApp number. Select “Prepare WhatsApp brief,” review the message, open WhatsApp, and attach any plans, title documents, drawings or site photographs before sending.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="form-progress" aria-live="polite">
+      <div><b>Brief completion</b><span id="formProgressText">0 of 5 required fields completed</span></div>
+      <div class="progress-track" aria-hidden="true"><span id="formProgressBar"></span></div>
+    </div>
+
     <div class="brief-layout">
       <form id="scopeForm" novalidate>
-        <div class="form-grid">
-          <label class="full"><span>Service needed *</span><select name="service" required><option value="">Select a service</option><option>Boundary and cadastral survey</option><option>Topographic survey</option><option>Engineering survey</option><option>GIS and spatial analysis</option><option>Remote sensing</option><option>Land and spatial advisory</option><option>Not sure yet</option></select></label>
-          <label><span>Project location *</span><input name="location" required autocomplete="street-address" placeholder="Town, LGA or site description"></label>
-          <label><span>Project stage</span><select name="stage"><option value="">Select stage</option><option>Land identification or documentation</option><option>Feasibility or planning</option><option>Design</option><option>Construction</option><option>As-built or verification</option><option>Asset management or analysis</option></select></label>
-          <label><span>Approximate site size</span><input name="size" placeholder="e.g. 2 plots, 4 ha, 1.5 km corridor"></label>
-          <label><span>Required output</span><select name="output"><option value="">Select output</option><option>Boundary or parcel plan</option><option>Topographic plan / CAD data</option><option>Setting-out / control information</option><option>As-built record</option><option>GIS layers / map / analysis</option><option>Remote-sensing map or analysis</option><option>Advice on the right output</option></select></label>
-          <label class="full"><span>Available records</span><input name="records" placeholder="Survey plan, title document, coordinates, drawings, imagery or none"></label>
-          <label><span>Preferred timing</span><input name="timing" placeholder="e.g. within two weeks"></label>
-          <label><span>Site access</span><input name="access" placeholder="Contact person, gate access or constraints"></label>
-          <label class="full"><span>Project details *</span><textarea name="details" required rows="5" placeholder="What decision or work will this survey support?"></textarea></label>
-          <label><span>Your name *</span><input name="name" required autocomplete="name"></label>
-          <label><span>Phone / WhatsApp *</span><input name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="e.g. +234 803 478 4082"></label>
+        <div class="mobile-form-nav" role="tablist" aria-label="Project brief steps">
+          <button type="button" role="tab" aria-selected="true" data-form-step="0"><span>1</span>Basics</button>
+          <button type="button" role="tab" aria-selected="false" data-form-step="1"><span>2</span>Outputs</button>
+          <button type="button" role="tab" aria-selected="false" data-form-step="2"><span>3</span>Contact</button>
+        </div>
+        <fieldset class="form-step is-active">
+          <legend><span>01</span><div>Project basics<small>What is the work and where is it?</small></div></legend>
+          <div class="form-grid">
+            <label class="full"><span>Service needed *</span><select name="service" required><option value="">Select a service</option><option>Boundary and cadastral survey</option><option>Topographic survey</option><option>Engineering survey</option><option>GIS and spatial analysis</option><option>Remote sensing</option><option>Land and spatial advisory</option><option>Not sure yet</option></select><small>Choose “Not sure yet” when the appropriate survey is unclear.</small></label>
+            <label><span>Project location *</span><input name="location" required autocomplete="street-address" placeholder="Town, LGA or site description"></label>
+            <label><span>Project stage</span><select name="stage"><option value="">Select stage</option><option>Land identification or documentation</option><option>Feasibility or planning</option><option>Design</option><option>Construction</option><option>As-built or verification</option><option>Asset management or analysis</option></select></label>
+            <label><span>Approximate site size</span><input name="size" placeholder="e.g. 2 plots, 4 ha, 1.5 km corridor"></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-step">
+          <legend><span>02</span><div>Outputs and logistics<small>What should be delivered and what is already available?</small></div></legend>
+          <div class="form-grid">
+            <label><span>Required output</span><select name="output"><option value="">Select output</option><option>Boundary or parcel plan</option><option>Topographic plan / CAD data</option><option>Setting-out / control information</option><option>As-built record</option><option>GIS layers / map / analysis</option><option>Remote-sensing map or analysis</option><option>Advice on the right output</option></select></label>
+            <label><span>Preferred timing</span><input name="timing" placeholder="e.g. within two weeks"></label>
+            <label class="full"><span>Available records</span><input name="records" placeholder="Survey plan, title document, coordinates, drawings, imagery or none"></label>
+            <label class="full"><span>Site access</span><input name="access" placeholder="Contact person, gate access or constraints"></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-step">
+          <legend><span>03</span><div>Purpose and contact<small>What decision will the survey support and who should receive the response?</small></div></legend>
+          <div class="form-grid">
+            <label class="full"><span>Project details *</span><textarea name="details" required rows="5" placeholder="What decision or work will this survey support?"></textarea></label>
+            <label><span>Your name *</span><input name="name" required autocomplete="name"></label>
+            <label><span>Phone / WhatsApp *</span><input name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="e.g. +234 803 478 4082"></label>
+          </div>
+        </fieldset>
+
+        <div class="mobile-form-controls">
+          <button class="button button-secondary" type="button" id="formStepPrev">Back</button>
+          <span id="mobileStepLabel">Step 1 of 3</span>
+          <button class="button button-primary" type="button" id="formStepNext">Next</button>
         </div>
         <div class="form-actions"><button class="button button-primary" type="submit">Prepare WhatsApp brief <svg class="icon"><use href="#i-arrow"/></svg></button><button class="button button-secondary" type="reset">Clear form</button></div>
         <p class="form-note">Plans, drawings and site photographs can be attached after WhatsApp opens.</p>
@@ -295,6 +364,12 @@
   </div>
   <div class="container footer-bottom"><span>© <span id="year"></span> Hambare Geosurveys Nig. Ltd.</span><span>RC 1530958</span></div>
 </footer>
+
+<nav class="mobile-action-bar" aria-label="Quick contact actions">
+  <a href="tel:+2348034784082"><svg class="icon"><use href="#i-phone"/></svg><span>Call</span></a>
+  <a class="wa-link" href="#"><svg class="icon"><use href="#i-message"/></svg><span>WhatsApp</span></a>
+  <a class="mobile-action-primary" href="#brief"><svg class="icon"><use href="#i-file"/></svg><span>Quote</span></a>
+</nav>
 
 <a class="floating-wa wa-link" href="#" aria-label="Chat with Hambare on WhatsApp"><svg class="icon"><use href="#i-message"/></svg><span>WhatsApp</span></a>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
