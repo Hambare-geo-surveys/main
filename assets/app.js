@@ -214,6 +214,23 @@
     catch { toast('Copy was blocked. Select the brief manually.'); }
   });
 
+  const mobileActionBar = $('.mobile-action-bar');
+  const heroSection = $('.hero');
+  const mobileActionQuery = window.matchMedia('(max-width:720px)');
+  const syncMobileActionBar = () => {
+    if (!mobileActionBar) return;
+    if (!mobileActionQuery.matches) {
+      mobileActionBar.classList.remove('is-visible');
+      return;
+    }
+    const heroBottom = heroSection?.getBoundingClientRect().bottom ?? 0;
+    mobileActionBar.classList.toggle('is-visible', heroBottom < 120);
+  };
+  window.addEventListener('scroll', syncMobileActionBar, {passive:true});
+  window.addEventListener('resize', syncMobileActionBar);
+  mobileActionQuery.addEventListener?.('change', syncMobileActionBar);
+  syncMobileActionBar();
+
   const sections = $$('main section[id]');
   const navLinks = $$('#primary-nav a');
   if ('IntersectionObserver' in window) {
