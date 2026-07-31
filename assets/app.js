@@ -58,6 +58,68 @@
   $$('.hero-shortcuts button').forEach(b => b.addEventListener('click', () => { renderFinder(b.dataset.solution); $('#solutions').scrollIntoView({behavior:'smooth'}); }));
 
   const form = $('#scopeForm');
+  const requiredFields = $$('[required]', form);
+  const formSteps = $$('.form-step', form);
+  const formStepTabs = $$('.mobile-form-nav [data-form-step]', form);
+  const formStepPrev = $('#formStepPrev');
+  const formStepNext = $('#formStepNext');
+  const mobileStepLabel = $('#mobileStepLabel');
+  let activeFormStep = 0;
+  const mobileStepperQuery = window.matchMedia('(max-width:720px)');
+  const validateFormStep = index => {
+    let valid = true;
+    $$('[required]', formSteps[index]).forEach(el => {
+      const bad = !String(el.value).trim();
+      el.setAttribute('aria-invalid', String(bad));
+      if (bad) valid = false;
+    });
+    if (!valid) formSteps[index].querySelector('[aria-invalid="true"]')?.focus();
+    return valid;
+  };
+  const showFormStep = (index, focus = false) => {
+    activeFormStep = Math.max(0, Math.min(index, formSteps.length - 1));
+    form.dataset.activeStep = String(activeFormStep);
+    formSteps.forEach((step, i) => step.classList.toggle('is-active', i === activeFormStep));
+    formStepTabs.forEach((tab, i) => tab.setAttribute('aria-selected', String(i === activeFormStep)));
+    if (mobileStepLabel) mobileStepLabel.textContent = `Step ${activeFormStep + 1} of ${formSteps.length}`;
+    if (focus && mobileStepperQuery.matches) formSteps[activeFormStep].querySelector('select,input,textarea')?.focus({preventScroll:true});
+  };
+  const syncMobileStepper = () => {
+    form.classList.toggle('mobile-stepper-ready', mobileStepperQuery.matches);
+    if (mobileStepperQuery.matches) showFormStep(activeFormStep);
+    else formSteps.forEach(step => step.classList.add('is-active'));
+  };
+  formStepTabs.forEach(tab => tab.addEventListener('click', () => {
+    const nextIndex = Number(tab.dataset.formStep);
+    if (nextIndex > activeFormStep && !validateFormStep(activeFormStep)) {
+      toast('Complete the required fields in this step.');
+      return;
+    }
+    showFormStep(nextIndex, true);
+  }));
+  formStepPrev?.addEventListener('click', () => showFormStep(activeFormStep - 1, true));
+  formStepNext?.addEventListener('click', () => {
+    if (!validateFormStep(activeFormStep)) {
+      toast('Complete the required fields in this step.');
+      return;
+    }
+    showFormStep(activeFormStep + 1, true);
+    form.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  mobileStepperQuery.addEventListener?.('change', syncMobileStepper);
+  syncMobileStepper();
+  const progressText = $('#formProgressText');
+  const progressBar = $('#formProgressBar');
+  const progressBox = $('.form-progress');
+  const updateFormProgress = () => {
+    const completed = requiredFields.filter(el => String(el.value).trim()).length;
+    const total = requiredFields.length;
+    const percent = total ? Math.round((completed / total) * 100) : 0;
+    progressText.textContent = `${completed} of ${total} required fields completed`;
+    progressBar.style.width = `${percent}%`;
+    progressBox.classList.toggle('complete', completed === total);
+  };
+  const signalFormChange = () => form.dispatchEvent(new Event('input', {bubbles:true}));
   const chooseOption = (name, text) => {
     const select = form.elements[name];
     const option = [...select.options].find(o => o.textContent.trim() === text);
@@ -68,11 +130,13 @@
     chooseOption('service', d.service);
     chooseOption('stage', d.stage);
     chooseOption('output', d.output);
+    signalFormChange();
+    showFormStep(0);
     $('#brief').scrollIntoView({behavior:'smooth'});
     toast('Suggested service added to the project brief.');
   };
   $('#finderCta').addEventListener('click', () => applySolution(currentSolution));
-  $$('.service-request').forEach(b => b.addEventListener('click', () => { chooseOption('service', b.dataset.service); $('#brief').scrollIntoView({behavior:'smooth'}); toast('Service added to the project brief.'); }));
+  $$('.service-request').forEach(b => b.addEventListener('click', () => { chooseOption('service', b.dataset.service); signalFormChange(); showFormStep(0); $('#brief').scrollIntoView({behavior:'smooth'}); toast('Service added to the project brief.'); }));
 
   const deliverables = {
     boundary: { title:'Boundary plan', description:'A controlled representation of parcel geometry, corner points, bearings, distances and relevant survey information.', list:['Parcel geometry and corner references','Bearings, distances and coordinates','North point, scale and survey notes'], formats:'PDF · print · CAD · coordinate schedule', image:'assets/visuals/boundary-plan.svg', alt:'Illustrative boundary plan' },
@@ -100,12 +164,16 @@
   modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
 
   const preview = $('#briefPreview');
+  const previewPanel = $('.brief-preview');
+  let briefPrepared = false;
   const waButton = $('#briefWhatsApp');
   const buildBrief = () => {
     const data = Object.fromEntries(new FormData(form).entries());
     return `HAMBARE GEOSURVEYS - PROJECT BRIEF\nFor: Registered Surveyor Hamid Adebare\n\nName: ${data.name || '-'}\nPhone / WhatsApp: ${data.phone || '-'}\nService: ${data.service || '-'}\nLocation: ${data.location || '-'}\nProject stage: ${data.stage || '-'}\nApproximate size: ${data.size || '-'}\nRequired output: ${data.output || '-'}\nAvailable records: ${data.records || '-'}\nPreferred timing: ${data.timing || '-'}\nSite access: ${data.access || '-'}\n\nProject details:\n${data.details || '-'}\n\nPlease review this information and advise on scope, timing and quotation.`;
   };
   const updatePreview = () => {
+    briefPrepared = false;
+    previewPanel?.classList.remove('ready');
     const any = [...new FormData(form).values()].some(v => String(v).trim());
     waButton.classList.add('disabled');
     waButton.setAttribute('aria-disabled','true');
@@ -113,15 +181,32 @@
     if (!any) { preview.textContent = 'Complete the form to prepare a concise survey enquiry.'; return; }
     const brief = buildBrief(); preview.textContent = brief;
   };
-  form.addEventListener('input', updatePreview);
-  form.addEventListener('reset', () => setTimeout(updatePreview, 0));
+  form.addEventListener('input', () => { updatePreview(); updateFormProgress(); });
+  form.addEventListener('reset', () => setTimeout(() => { updatePreview(); updateFormProgress(); showFormStep(0); }, 0));
   form.addEventListener('submit', e => {
     e.preventDefault();
     let valid = true;
     $$('[required]', form).forEach(el => { const bad = !el.value.trim(); el.setAttribute('aria-invalid', String(bad)); if (bad) valid = false; });
-    if (!valid) { toast('Complete the required fields.'); form.querySelector('[aria-invalid="true"]')?.focus(); return; }
-    const brief = buildBrief(); preview.textContent = brief; waButton.href = waUrl(brief); waButton.classList.remove('disabled'); waButton.removeAttribute('aria-disabled'); toast('Project brief is ready.');
+    if (!valid) {
+      const firstInvalid = form.querySelector('[aria-invalid="true"]');
+      const invalidStep = formSteps.findIndex(step => step.contains(firstInvalid));
+      if (invalidStep >= 0) showFormStep(invalidStep);
+      toast('Complete the required fields.');
+      firstInvalid?.focus();
+      return;
+    }
+    const brief = buildBrief();
+    briefPrepared = true;
+    preview.textContent = brief;
+    previewPanel?.classList.add('ready');
+    waButton.href = waUrl(brief);
+    waButton.classList.remove('disabled');
+    waButton.removeAttribute('aria-disabled');
+    toast('Project brief is ready.');
+    if (mobileStepperQuery.matches) previewPanel?.scrollIntoView({behavior:'smooth', block:'start'});
   });
+  updateFormProgress();
+
   $('#copyBrief').addEventListener('click', async () => {
     const text = preview.textContent.trim();
     if (!text || text.startsWith('Complete the form')) { toast('Complete the form first.'); return; }
