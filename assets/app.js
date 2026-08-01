@@ -55,7 +55,7 @@
     $('#finderOutputs').textContent = d.outputs;
   };
   $$('.finder-tabs button').forEach(b => b.addEventListener('click', () => renderFinder(b.dataset.finder)));
-  $$('.hero-shortcuts button').forEach(b => b.addEventListener('click', () => { renderFinder(b.dataset.solution); $('#solutions').scrollIntoView({behavior:'smooth'}); }));
+  $$('.shortcut-grid button[data-solution]').forEach(b => b.addEventListener('click', () => { renderFinder(b.dataset.solution); $('#solutions').scrollIntoView({behavior:'smooth'}); }));
 
   const form = $('#scopeForm');
   const requiredFields = $$('[required]', form);
@@ -154,8 +154,20 @@
     $('#deliverableDescription').textContent = d.description;
     $('#deliverableList').innerHTML = d.list.map(x => `<li>${x}</li>`).join('');
     $('#deliverableFormats').textContent = d.formats;
+    const keys = Object.keys(deliverables);
+    const counter = $('#deliverableCounter');
+    if (counter) counter.textContent = `${keys.indexOf(key) + 1} of ${keys.length}`;
   };
   $$('.deliverable-tabs button').forEach(b => b.addEventListener('click', () => renderDeliverable(b.dataset.output)));
+  const deliverableKeys = Object.keys(deliverables);
+  $('.deliverable-prev')?.addEventListener('click', () => {
+    const i = deliverableKeys.indexOf(currentDeliverable);
+    renderDeliverable(deliverableKeys[(i - 1 + deliverableKeys.length) % deliverableKeys.length]);
+  });
+  $('.deliverable-next')?.addEventListener('click', () => {
+    const i = deliverableKeys.indexOf(currentDeliverable);
+    renderDeliverable(deliverableKeys[(i + 1) % deliverableKeys.length]);
+  });
   const modal = $('#deliverableModal');
   const openModal = () => { const d = deliverables[currentDeliverable]; $('#modalTitle').textContent = d.title; const img = $('img', modal); img.src = d.image; img.alt = d.alt; modal.showModal(); };
   $('#deliverableOpen').addEventListener('click', openModal);
@@ -230,6 +242,101 @@
   window.addEventListener('resize', syncMobileActionBar);
   mobileActionQuery.addEventListener?.('change', syncMobileActionBar);
   syncMobileActionBar();
+
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileCarouselQuery = window.matchMedia('(max-width:720px)');
+  const initialiseCarousel = track => {
+    const items = [...track.children];
+    const controls = document.querySelector(`[data-carousel-controls="${track.id}"]`);
+    if (!controls || items.length < 2) return;
+    const prev = $('.carousel-prev', controls);
+    const next = $('.carousel-next', controls);
+    const counter = $('.carousel-counter', controls);
+    const dots = $('.carousel-dots', controls);
+    dots.innerHTML = items.map((_, i) => `<i class="${i === 0 ? 'is-active' : ''}" data-dot="${i}"></i>`).join('');
+    let index = 0;
+    let timer = null;
+    let raf = null;
+    const nearestIndex = () => {
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let best = 0, dist = Infinity;
+      items.forEach((item, i) => {
+        const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+        const d = Math.abs(center - itemCenter);
+        if (d < dist) { dist = d; best = i; }
+      });
+      return best;
+    };
+    const update = forced => {
+      index = typeof forced === 'number' ? forced : nearestIndex();
+      counter.textContent = `${index + 1} / ${items.length}`;
+      $$('.carousel-dots i', controls).forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+    };
+    const go = nextIndex => {
+      index = (nextIndex + items.length) % items.length;
+      const item = items[index];
+      const left = Math.max(0, item.offsetLeft - (track.clientWidth - item.offsetWidth) / 2);
+      track.scrollTo({left, behavior: reducedMotion.matches ? 'auto' : 'smooth'});
+      update(index);
+    };
+    const stop = () => { if (timer) clearInterval(timer); timer = null; };
+    const start = () => {
+      stop();
+      if (!mobileCarouselQuery.matches || reducedMotion.matches || document.hidden) return;
+      const delay = Number(track.dataset.autoplay || 6500);
+      timer = setInterval(() => go(index + 1), delay);
+    };
+    prev.addEventListener('click', () => { go(index - 1); start(); });
+    next.addEventListener('click', () => { go(index + 1); start(); });
+    track.addEventListener('scroll', () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => update());
+    }, {passive:true});
+    ['pointerdown','touchstart','focusin'].forEach(type => track.addEventListener(type, stop, {passive:true}));
+    ['pointerup','touchend','focusout'].forEach(type => track.addEventListener(type, start, {passive:true}));
+    track.addEventListener('mouseenter', stop);
+    track.addEventListener('mouseleave', start);
+    document.addEventListener('visibilitychange', start);
+    mobileCarouselQuery.addEventListener?.('change', () => { update(); start(); });
+    reducedMotion.addEventListener?.('change', start);
+    new ResizeObserver(() => update()).observe(track);
+    update(0);
+    start();
+  };
+  $$('[data-carousel]').forEach(initialiseCarousel);
+
+  const guideVideo = $('#briefGuideVideo');
+  const guideSource = $('#briefGuideSource');
+  const guideFullscreen = $('#videoFullscreen');
+  const guideMediaQuery = window.matchMedia('(max-width:720px)');
+  const syncGuideMedia = () => {
+    if (!guideVideo || !guideSource) return;
+    const mobile = guideMediaQuery.matches;
+    const desired = guideVideo.dataset[mobile ? 'mobileSrc' : 'desktopSrc'];
+    const poster = guideVideo.dataset[mobile ? 'mobilePoster' : 'desktopPoster'];
+    if (poster) guideVideo.poster = poster;
+    const current = guideSource.getAttribute('src');
+    if (desired && current !== desired) {
+      const time = guideVideo.currentTime || 0;
+      const paused = guideVideo.paused;
+      guideSource.src = desired;
+      guideVideo.load();
+      guideVideo.addEventListener('loadedmetadata', () => {
+        if (time && Number.isFinite(guideVideo.duration)) guideVideo.currentTime = Math.min(time, guideVideo.duration - .2);
+        if (!paused) guideVideo.play().catch(() => {});
+      }, {once:true});
+    }
+  };
+  guideMediaQuery.addEventListener?.('change', syncGuideMedia);
+  syncGuideMedia();
+  guideFullscreen?.addEventListener('click', async () => {
+    if (!guideVideo) return;
+    try {
+      if (guideVideo.requestFullscreen) await guideVideo.requestFullscreen();
+      else if (guideVideo.webkitEnterFullscreen) guideVideo.webkitEnterFullscreen();
+    } catch { toast('Use the full-screen icon in the video controls.'); }
+  });
 
   const sections = $$('main section[id]');
   const navLinks = $$('#primary-nav a');
