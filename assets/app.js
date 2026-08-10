@@ -338,6 +338,27 @@
     } catch { toast('Use the full-screen icon in the video controls.'); }
   });
 
+  const hero = $('.hero');
+  const reticle = $('#heroReticle');
+  const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)');
+  if (hero && reticle && finePointer.matches) {
+    hero.addEventListener('pointermove', e => {
+      const rect = hero.getBoundingClientRect();
+      reticle.style.transform = `translate(${e.clientX - rect.left}px, ${e.clientY - rect.top}px)`;
+    });
+    hero.addEventListener('pointerleave', () => { reticle.style.opacity = '0'; });
+    hero.addEventListener('pointerenter', () => { reticle.style.opacity = ''; });
+  }
+
+  if ('IntersectionObserver' in window && !reducedMotion.matches) {
+    const revealTargets = $$('.service-card,.process-grid article,.image-card,.deliverable-shell,.finder-result,.company-facts>div,.approach-frame');
+    revealTargets.forEach(el => el.classList.add('reveal'));
+    const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('in-view'); revealObserver.unobserve(entry.target); }
+    }), {threshold: .12, rootMargin: '0px 0px -40px'});
+    revealTargets.forEach(el => revealObserver.observe(el));
+  }
+
   const sections = $$('main section[id]');
   const navLinks = $$('#primary-nav a');
   if ('IntersectionObserver' in window) {
