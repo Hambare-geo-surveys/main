@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Hambare Geosurveys Nig. Ltd. | Land, Engineering Survey &amp; GIS</title>
 <meta content="Hambare provides boundary, topographic and engineering surveys, GIS, remote sensing and spatial advisory with Registered Surveyor Hamid Adebare." name="description"/>
-<meta content="#071b2b" name="theme-color"/>
+<meta content="#12211b" name="theme-color"/>
 <meta content="website" property="og:type"/>
 <meta content="Hambare Geosurveys Nig. Ltd." property="og:title"/>
 <meta content="Surveying and spatial services with Registered Surveyor Hamid Adebare for land, design, construction and asset decisions." property="og:description"/>
@@ -16,6 +15,8 @@
 <link href="manifest.webmanifest" rel="manifest"/>
 <link as="image" href="assets/img/hero-mobile-focus.webp" media="(max-width:720px)" rel="preload"/>
 <link as="image" href="assets/img/hero.webp" media="(min-width:721px)" rel="preload"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
 <link href="assets/styles.css" rel="stylesheet"/>
 <script defer="" src="assets/app.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Hambare Geosurveys Nig. Ltd.","telephone":"+2348034784082","contactPoint":{"@type":"ContactPoint","name":"Registered Surveyor Hamid Adebare","telephone":"+2348034784082","contactType":"survey project enquiries"},"address":{"@type":"PostalAddress","streetAddress":"Alhaji Balogun's House, Oke-Esa","addressLocality":"Iseyin","addressRegion":"Oyo State","addressCountry":"NG"},"description":"Boundary, topographic and engineering surveys, GIS, mapping, remote sensing and spatial advisory."}</script>
@@ -42,10 +43,11 @@
 <symbol id="i-zoom" viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4M8 11h6M11 8v6"></path></symbol>
 <symbol id="i-copy" viewbox="0 0 24 24"><rect height="11" rx="2" width="11" x="9" y="9"></rect><path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3"></path></symbol>
 <symbol id="i-download" viewbox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></symbol>
+<symbol id="i-pin" viewbox="0 0 24 24"><path d="M12 21s7-6.6 7-12a7 7 0 1 0-14 0c0 5.4 7 12 7 12z"></path><circle cx="12" cy="9" r="2.4"></circle></symbol>
 </svg>
 <div class="utility-bar">
 <div class="container utility-inner">
-<span>Surveying · Mapping · Engineering Measurement · GIS</span>
+<span class="coord-stamp">07°58'N · 003°36'E — ISEYIN, OYO STATE, NG</span>
 <div>
 <a href="tel:+2348034784082"><svg class="icon"><use href="#i-phone"></use></svg> +234 803 478 4082</a>
 <a class="wa-link" href="#"><svg class="icon"><use href="#i-message"></use></svg> WhatsApp</a>
@@ -60,11 +62,12 @@
 </a>
 <button aria-controls="primary-nav" aria-expanded="false" class="menu-toggle" type="button"><svg class="icon"><use href="#i-menu"></use></svg><span class="sr-only">Open menu</span></button>
 <nav aria-label="Primary navigation" class="primary-nav" id="primary-nav">
-<a href="#services">Services</a>
-<a href="#solutions">Solutions</a>
-<a href="#deliverables">Deliverables</a>
-<a href="#company">Company</a>
-<a href="#contact">Contact</a>
+<a href="#services"><i>01</i>Services</a>
+<a href="#solutions"><i>02</i>Solutions</a>
+<a href="#approach"><i>03</i>Approach</a>
+<a href="#deliverables"><i>04</i>Deliverables</a>
+<a href="#company"><i>05</i>Company</a>
+<a href="#contact"><i>06</i>Contact</a>
 <div class="mobile-nav-actions">
 <a class="button button-primary" href="#brief">Request a quote</a>
 <a class="button button-whatsapp wa-link" href="#">WhatsApp</a>
@@ -76,16 +79,23 @@
 </header>
 <main id="main">
 <section class="hero" id="top">
-<picture class="hero-media">
+<div class="hero-media frame frame-light">
+<picture>
 <source media="(max-width:720px)" srcset="assets/img/hero-mobile-focus.webp"/>
 <img alt="Surveyor in a Hambare Geosurveys vest operating a total station above an urban area" fetchpriority="high" height="860" src="assets/img/hero.webp" width="1920"/>
 </picture>
+<i class="fm"></i><i class="fm"></i><i class="fm"></i><i class="fm"></i>
+</div>
 <div class="hero-overlay"></div>
+<div class="hero-reticle" id="heroReticle" aria-hidden="true">
+<svg viewbox="0 0 46 46"><circle cx="23" cy="23" r="15"></circle><circle class="dot" cx="23" cy="23" r="2"></circle><line x1="23" y1="1" x2="23" y2="10"></line><line x1="23" y1="36" x2="23" y2="45"></line><line x1="1" y1="23" x2="10" y2="23"></line><line x1="36" y1="23" x2="45" y2="23"></line></svg>
+</div>
+<div class="hero-coordbar"><span></span> LOCKED · TOTAL STATION ONLINE</div>
 <div class="container hero-inner">
 <div class="hero-copy">
 <span class="eyebrow">Land · design · construction · spatial data</span>
-<h1>Survey data. Clear project decisions.</h1>
-<p>Boundary, topographic and engineering surveys for land, design and construction.</p>
+<h1>Know exactly where you stand.</h1>
+<p>Boundary, topographic and engineering surveys that turn field measurement into clear, usable decisions — for land, design and construction.</p>
 <div class="hero-actions">
 <a class="button button-primary" href="#brief">Request a survey quote <svg class="icon"><use href="#i-arrow"></use></svg></a>
 <a class="button button-light" href="#services">Explore services</a>
@@ -106,57 +116,65 @@
 </div><div class="carousel-nav carousel-nav-dark" data-carousel-controls="projectRouteCarousel"><button aria-label="Previous project routes" class="carousel-arrow carousel-prev" type="button"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button><div class="carousel-status"><div class="carousel-status-top"><span aria-live="polite" class="carousel-counter">1 / 1</span><span class="carousel-hint">Moves automatically · swipe or use arrows</span></div><div aria-hidden="true" class="carousel-dots"></div></div><button aria-label="Next project routes" class="carousel-arrow carousel-next" type="button"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button></div>
 </div>
 </section>
+
+<div class="marquee" aria-hidden="true">
+<div class="marquee-track">
+<span>Boundary &amp; cadastral survey</span><span>Topographic survey</span><span>Engineering survey</span><span>GIS &amp; spatial analysis</span><span>Remote sensing</span><span>Land &amp; spatial advisory</span>
+<span>Boundary &amp; cadastral survey</span><span>Topographic survey</span><span>Engineering survey</span><span>GIS &amp; spatial analysis</span><span>Remote sensing</span><span>Land &amp; spatial advisory</span>
+</div>
+</div>
+
 <section class="services section" id="services">
 <div class="container">
 <div class="section-head split-head">
-<div><span class="eyebrow dark">Core services</span><h2>Surveying and spatial services.</h2></div>
+<div><span class="eyebrow pine">01 — Core services</span><h2>Surveying and spatial services.</h2></div>
 <p>Choose by project need. Scope, field method and deliverables are confirmed before mobilisation.</p>
 </div>
 <div aria-label="Core services" aria-roledescription="carousel" class="service-grid" data-autoplay="6500" data-carousel="" id="serviceCarousel">
 <article class="service-card">
 <div class="service-icon"><svg class="icon"><use href="#i-compass"></use></svg></div>
-<span>01</span><h3>Boundary &amp; cadastral survey</h3><p>Identify parcel limits and prepare survey information for land documentation and boundary decisions.</p>
+<span class="num">01</span><h3>Boundary &amp; cadastral survey</h3><p>Identify parcel limits and prepare survey information for land documentation and boundary decisions.</p>
 <div class="service-output"><b>Typical outputs</b> Boundary plan · coordinates · survey records</div>
 <button class="text-link service-request" data-service="Boundary and cadastral survey">Request this service <svg class="icon"><use href="#i-arrow"></use></svg></button>
 </article>
 <article class="service-card">
 <div class="service-icon"><svg class="icon"><use href="#i-map"></use></svg></div>
-<span>02</span><h3>Topographic survey</h3><p>Capture terrain, levels and visible site features for planning, feasibility and design.</p>
+<span class="num">02</span><h3>Topographic survey</h3><p>Capture terrain, levels and visible site features for planning, feasibility and design.</p>
 <div class="service-output"><b>Typical outputs</b> Topographic plan · contours · CAD data</div>
 <button class="text-link service-request" data-service="Topographic survey">Request this service <svg class="icon"><use href="#i-arrow"></use></svg></button>
 </article>
 <article class="service-card">
 <div class="service-icon"><svg class="icon"><use href="#i-ruler"></use></svg></div>
-<span>03</span><h3>Engineering survey</h3><p>Transfer design positions and levels to site, establish control and record completed work.</p>
+<span class="num">03</span><h3>Engineering survey</h3><p>Transfer design positions and levels to site, establish control and record completed work.</p>
 <div class="service-output"><b>Typical outputs</b> Setting-out data · checks · as-built records</div>
 <button class="text-link service-request" data-service="Engineering survey">Request this service <svg class="icon"><use href="#i-arrow"></use></svg></button>
 </article>
 <article class="service-card">
 <div class="service-icon"><svg class="icon"><use href="#i-layers"></use></svg></div>
-<span>04</span><h3>GIS &amp; spatial analysis</h3><p>Organise locations, attributes and project records into useful maps and spatial datasets.</p>
+<span class="num">04</span><h3>GIS &amp; spatial analysis</h3><p>Organise locations, attributes and project records into useful maps and spatial datasets.</p>
 <div class="service-output"><b>Typical outputs</b> GIS layers · maps · databases · analysis</div>
 <button class="text-link service-request" data-service="GIS and spatial analysis">Request this service <svg class="icon"><use href="#i-arrow"></use></svg></button>
 </article>
 <article class="service-card">
 <div class="service-icon"><svg class="icon"><use href="#i-satellite"></use></svg></div>
-<span>05</span><h3>Remote sensing</h3><p>Use satellite or aerial imagery to examine land cover, development and change across an area.</p>
+<span class="num">05</span><h3>Remote sensing</h3><p>Use satellite or aerial imagery to examine land cover, development and change across an area.</p>
 <div class="service-output"><b>Typical outputs</b> Image maps · classifications · change analysis</div>
 <button class="text-link service-request" data-service="Remote sensing">Request this service <svg class="icon"><use href="#i-arrow"></use></svg></button>
 </article>
 <article class="service-card">
 <div class="service-icon"><svg class="icon"><use href="#i-target"></use></svg></div>
-<span>06</span><h3>Land &amp; spatial advisory</h3><p>Review available spatial information and define the survey or mapping work required for the next decision.</p>
+<span class="num">06</span><h3>Land &amp; spatial advisory</h3><p>Review available spatial information and define the survey or mapping work required for the next decision.</p>
 <div class="service-output"><b>Typical outputs</b> Scope advice · data review · mapping support</div>
 <button class="text-link service-request" data-service="Land and spatial advisory">Request this service <svg class="icon"><use href="#i-arrow"></use></svg></button>
 </article>
 </div><div class="carousel-nav carousel-nav-light" data-carousel-controls="serviceCarousel"><button aria-label="Previous core services" class="carousel-arrow carousel-prev" type="button"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button><div class="carousel-status"><div class="carousel-status-top"><span aria-live="polite" class="carousel-counter">1 / 1</span><span class="carousel-hint">Moves automatically · swipe or use arrows</span></div><div aria-hidden="true" class="carousel-dots"></div></div><button aria-label="Next core services" class="carousel-arrow carousel-next" type="button"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button></div>
-
 </div>
 </section>
+
 <section class="solution-finder" id="solutions">
 <div class="container finder-layout">
 <div class="finder-copy">
-<span class="eyebrow">Not sure what to request?</span>
+<span class="eyebrow on-dark">02 — Not sure what to request?</span>
 <h2>Start with your project goal.</h2>
 <p>Select the decision you need to make. The site will suggest a practical survey route and add it to your project brief.</p>
 <div aria-label="Project goals" class="finder-tabs" role="tablist">
@@ -166,7 +184,8 @@
 <button aria-selected="false" data-finder="assets" role="tab">Assets or mapping</button>
 </div>
 </div>
-<div aria-live="polite" class="finder-result">
+<div aria-live="polite" class="finder-result frame">
+<i class="fm"></i><i class="fm"></i><i class="fm"></i><i class="fm"></i>
 <div class="finder-status"><i></i> Recommended route</div>
 <h3 id="finderTitle">Boundary and cadastral survey</h3>
 <p id="finderText">Confirm parcel identity, corner positions and the survey information needed for a land or boundary decision.</p>
@@ -178,24 +197,42 @@
 </div>
 </div>
 </section>
+
+<section class="approach section" id="approach">
+<div class="container">
+<div class="section-head split-head">
+<div><span class="eyebrow pine">03 — How a scope is built</span><h2>Purpose, reference, requirement, output.</h2></div>
+<p>Every assignment is scoped the same way before anyone mobilises to site, so the survey method matches the decision it needs to support.</p>
+</div>
+<div class="approach-frame">
+<img alt="Diagram showing purpose, reference control, requirement and deliverable flow used to scope a survey" src="assets/visuals/scope-control-network.svg" width="1200" height="760" loading="lazy"/>
+</div>
+<div class="approach-note">
+<span>Illustrative technical diagram — not a project record</span>
+<span>HAG / Technical note 01</span>
+</div>
+</div>
+</section>
+
 <section class="field-section section">
 <div class="container">
 <div class="section-head split-head">
-<div><span class="eyebrow dark">Field to file</span><h2>Measurement, context and usable output.</h2></div>
+<div><span class="eyebrow">04 — Field to file</span><h2>Measurement, context and usable output.</h2></div>
 <p>The work is only complete when field observations become clear information for the next professional or decision-maker.</p>
 </div>
 <div aria-label="Field-to-file examples" aria-roledescription="carousel" class="image-grid" data-autoplay="6000" data-carousel="" id="fieldCarousel">
-<figure class="image-card image-card-large"><img alt="Black Nigerian surveyor viewed from behind in a Hambare Geosurveys reflective vest operating a total station" decoding="async" height="1152" loading="eager" src="assets/img/field-survey-hambare.webp" width="1536"/><figcaption><b>Field measurement</b><span>Control, observations and site records.</span></figcaption></figure>
-<figure class="image-card"><img alt="Aerial view showing buildings, roads and land features" decoding="async" height="900" loading="eager" src="assets/img/aerial-development.webp" width="1600"/><figcaption><b>Spatial context</b><span>Sites, corridors, assets and surrounding features.</span></figcaption></figure>
-<figure class="image-card"><img alt="Digital mapping and GIS workflow" decoding="async" height="800" loading="eager" src="assets/img/gis-workflow.webp" width="1200"/><figcaption><b>Data and mapping</b><span>Plans, layers, analysis and export-ready files.</span></figcaption></figure>
-</div><div class="carousel-nav carousel-nav-light" data-carousel-controls="fieldCarousel"><button aria-label="Previous field-to-file examples" class="carousel-arrow carousel-prev" type="button"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button><div class="carousel-status"><div class="carousel-status-top"><span aria-live="polite" class="carousel-counter">1 / 1</span><span class="carousel-hint">Moves automatically · swipe or use arrows</span></div><div aria-hidden="true" class="carousel-dots"></div></div><button aria-label="Next field-to-file examples" class="carousel-arrow carousel-next" type="button"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button></div>
+<figure class="image-card image-card-large frame frame-light"><i class="fm"></i><i class="fm"></i><i class="fm"></i><i class="fm"></i><img alt="Black Nigerian surveyor viewed from behind in a Hambare Geosurveys reflective vest operating a total station" decoding="async" height="1152" loading="eager" src="assets/img/field-survey-hambare.webp" width="1536"/><figcaption><span class="cap-tag">01 / FIELD MEASUREMENT</span><b>Control, observations and site records.</b></figcaption></figure>
+<figure class="image-card frame frame-light"><i class="fm"></i><i class="fm"></i><i class="fm"></i><i class="fm"></i><img alt="Aerial view showing buildings, roads and land features" decoding="async" height="900" loading="eager" src="assets/img/aerial-development.webp" width="1600"/><figcaption><span class="cap-tag">02 / SPATIAL CONTEXT</span><b>Sites, corridors, assets and surrounding features.</b></figcaption></figure>
+<figure class="image-card frame frame-light"><i class="fm"></i><i class="fm"></i><i class="fm"></i><i class="fm"></i><img alt="Surveyor recording field notes beside a total station instrument" decoding="async" height="900" loading="eager" src="assets/img/field-survey-wide.webp" width="1600"/><figcaption><span class="cap-tag">03 / INSTRUMENTATION</span><b>Precision equipment and field checks.</b></figcaption></figure>
+</div><div class="carousel-nav carousel-nav-dark" data-carousel-controls="fieldCarousel"><button aria-label="Previous field-to-file examples" class="carousel-arrow carousel-prev" type="button"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button><div class="carousel-status"><div class="carousel-status-top"><span aria-live="polite" class="carousel-counter">1 / 1</span><span class="carousel-hint">Moves automatically · swipe or use arrows</span></div><div aria-hidden="true" class="carousel-dots"></div></div><button aria-label="Next field-to-file examples" class="carousel-arrow carousel-next" type="button"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button></div>
 
-<p class="representative-note">Field image is a Hambare-branded representation; aerial and GIS imagery illustrate typical spatial workflows.</p></div>
+<p class="representative-note">Field and instrument photographs are representative of Hambare's survey practice and are not presented as evidence of a specific completed project. Aerial imagery illustrates a typical spatial context.</p></div>
 </section>
+
 <section class="deliverables section" id="deliverables">
 <div class="container">
 <div class="section-head split-head">
-<div><span class="eyebrow dark">Deliverables</span><h2>Know what you are commissioning.</h2></div>
+<div><span class="eyebrow pine">05 — Deliverables</span><h2>Know what you are commissioning.</h2></div>
 <p>These illustrations show common output types. The exact content and file format are agreed for each project.</p>
 </div>
 <div class="deliverable-shell">
@@ -206,7 +243,7 @@
 <button aria-selected="false" data-output="gis" role="tab">GIS workspace</button>
 </div>
 <div class="deliverable-view">
-<button aria-label="Open larger deliverable preview" class="deliverable-image" id="deliverableOpen"><img alt="Illustrative boundary plan" id="deliverableImage" src="assets/visuals/boundary-plan.svg"/></button>
+<button aria-label="Open larger deliverable preview" class="deliverable-image frame" id="deliverableOpen"><i class="fm"></i><i class="fm"></i><i class="fm"></i><i class="fm"></i><img alt="Illustrative boundary plan" id="deliverableImage" src="assets/visuals/boundary-plan.svg"/></button>
 <div class="deliverable-info">
 <span class="mini-label">Illustrative output</span>
 <h3 id="deliverableTitle">Boundary plan</h3>
@@ -219,9 +256,10 @@
 <div aria-label="Deliverable navigation" class="deliverable-nav"><button aria-label="Previous deliverable" class="deliverable-arrow deliverable-prev" type="button"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button><div class="deliverable-nav-center"><span aria-live="polite" id="deliverableCounter">1 of 4</span><small>Select a tab or use the arrows</small></div><button aria-label="Next deliverable" class="deliverable-arrow deliverable-next" type="button"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button></div></div>
 </div>
 </section>
+
 <section class="process section">
 <div class="container">
-<div class="section-head centered"><span class="eyebrow dark">How a project starts</span><h2>Four clear steps.</h2></div>
+<div class="section-head centered"><span class="eyebrow pine">How a project starts</span><h2>Four clear steps.</h2></div>
 <div class="process-grid">
 <article><span>01</span><div class="process-icon"><svg class="icon"><use href="#i-message"></use></svg></div><h3>Share the brief</h3><p>Send the location, purpose, available records and required output.</p></article>
 <article><span>02</span><div class="process-icon"><svg class="icon"><use href="#i-file"></use></svg></div><h3>Confirm scope</h3><p>Field method, access, deliverables, timing and commercial terms are agreed.</p></article>
@@ -230,10 +268,11 @@
 </div>
 </div>
 </section>
+
 <section class="company" id="company">
 <div class="container company-layout">
 <div class="company-copy">
-<span class="eyebrow">Hambare Geosurveys Nig. Ltd.</span>
+<span class="eyebrow on-dark">06 — Hambare Geosurveys Nig. Ltd.</span>
 <h2>Survey support for land and development decisions.</h2>
 <p>Hambare provides surveying, engineering measurement, mapping, remote sensing and GIS support from its operational base in Iseyin, Oyo State. Registered Surveyor Hamid Adebare is the named survey contact for project enquiries.</p>
 <a class="button button-outline" href="assets/docs/Hambare-Capability-Statement.pdf" target="_blank">Download capability statement</a>
@@ -241,28 +280,27 @@
 <div class="company-facts">
 <div><span>Registered surveyor</span><b>Hamid Adebare</b></div>
 <div><span>Company registration</span><b>RC 1530958</b></div>
-<div><span>Operational address</span><b>Alhaji Balogun’s House, Oke-Esa, Iseyin, Oyo State</b></div>
+<div><span>Operational address</span><b>Alhaji Balogun's House, Oke-Esa, Iseyin, Oyo State</b></div>
 <div><span>Direct contact</span><b><a href="tel:+2348034784082">+234 803 478 4082</a></b></div>
 </div>
 </div>
 </section>
+
 <section class="brief section" id="brief">
 <div class="container">
 <div class="section-head split-head">
-<div><span class="eyebrow dark">Request a survey quote</span><h2>Send a useful project brief.</h2></div>
+<div><span class="eyebrow pine">Request a survey quote</span><h2>Send a useful project brief.</h2></div>
 <p>Complete the essentials below. A structured message will be prepared for WhatsApp.</p>
 </div>
 <div aria-labelledby="brief-guide-title" class="brief-guide">
 <div class="guide-video-wrap">
 <video controls="" data-desktop-poster="assets/media/hambare-form-guide-poster-landscape.webp" data-desktop-src="assets/media/hambare-form-guide-landscape.mp4" data-mobile-poster="assets/media/hambare-form-guide-poster-portrait.webp" data-mobile-src="assets/media/hambare-form-guide-portrait.mp4" id="briefGuideVideo" playsinline="" poster="assets/media/hambare-form-guide-poster-landscape.webp" preload="metadata"><source id="briefGuideSource" src="assets/media/hambare-form-guide-landscape.mp4" type="video/mp4"/>
-
-
 <track default="" kind="captions" label="English" src="assets/media/hambare-form-guide.en.vtt" srclang="en"/>
           Your browser does not support embedded video. <a href="assets/media/hambare-form-guide-landscape.mp4">Download the guide</a>.
         </video>
 </div><div class="video-tools"><button class="video-fullscreen-button" id="videoFullscreen" type="button"><svg aria-hidden="true" class="icon"><use href="#i-zoom"></use></svg> Open full-screen guide</button><span>Large on-screen pointers and captions included</span></div>
 <div class="guide-copy">
-<span class="eyebrow dark">About one minute</span>
+<span class="eyebrow pine">About one minute</span>
 <h3 id="brief-guide-title">How to complete the survey brief</h3>
 <p>The guide uses large on-screen pointers and captions. On phones, it automatically loads a portrait version that remains readable in full screen.</p>
 <ol class="guide-steps">
@@ -276,7 +314,7 @@
 </div>
 <details class="video-transcript">
 <summary>Read the video transcript</summary>
-<p>Choose the survey service that most closely matches the decision you need to make. Select “Not sure yet” when the correct service is unclear. Enter the project location, stage and approximate size. Add the output you expect, any records already available, your preferred timing and site-access information. Explain what the survey will support, then provide your name and WhatsApp number. Select “Prepare WhatsApp brief,” review the message, open WhatsApp, and attach any plans, title documents, drawings or site photographs before sending.</p>
+<p>Choose the survey service that most closely matches the decision you need to make. Select "Not sure yet" when the correct service is unclear. Enter the project location, stage and approximate size. Add the output you expect, any records already available, your preferred timing and site-access information. Explain what the survey will support, then provide your name and WhatsApp number. Select "Prepare WhatsApp brief," review the message, open WhatsApp, and attach any plans, title documents, drawings or site photographs before sending.</p>
 </details>
 </div>
 </div>
@@ -294,7 +332,7 @@
 <fieldset class="form-step is-active">
 <legend><span>01</span><div>Project basics<small>What is the work and where is it?</small></div></legend>
 <div class="form-grid">
-<label class="full"><span>Service needed *</span><select name="service" required=""><option value="">Select a service</option><option>Boundary and cadastral survey</option><option>Topographic survey</option><option>Engineering survey</option><option>GIS and spatial analysis</option><option>Remote sensing</option><option>Land and spatial advisory</option><option>Not sure yet</option></select><small>Choose “Not sure yet” when the appropriate survey is unclear.</small></label>
+<label class="full"><span>Service needed *</span><select name="service" required=""><option value="">Select a service</option><option>Boundary and cadastral survey</option><option>Topographic survey</option><option>Engineering survey</option><option>GIS and spatial analysis</option><option>Remote sensing</option><option>Land and spatial advisory</option><option>Not sure yet</option></select><small>Choose "Not sure yet" when the appropriate survey is unclear.</small></label>
 <label><span>Project location *</span><input autocomplete="street-address" name="location" placeholder="Town, LGA or site description" required=""/></label>
 <label><span>Project stage</span><select name="stage"><option value="">Select stage</option><option>Land identification or documentation</option><option>Feasibility or planning</option><option>Design</option><option>Construction</option><option>As-built or verification</option><option>Asset management or analysis</option></select></label>
 <label><span>Approximate site size</span><input name="size" placeholder="e.g. 2 plots, 4 ha, 1.5 km corridor"/></label>
@@ -326,13 +364,14 @@
 <p class="form-note">Plans, drawings and site photographs can be attached after WhatsApp opens.</p>
 </form>
 <aside aria-live="polite" class="brief-preview">
-<div class="preview-head"><span>PROJECT BRIEF</span><i></i></div>
+<div class="preview-head"><span>PROJECT BRIEF — FIELD LOG</span><i></i></div>
 <pre id="briefPreview" tabindex="0">Complete the form to prepare a concise survey enquiry.</pre>
 <div class="preview-actions"><a aria-disabled="true" class="button button-whatsapp disabled" href="#" id="briefWhatsApp"><svg class="icon"><use href="#i-message"></use></svg> Open WhatsApp</a><button class="button button-outline-dark" id="copyBrief" type="button"><svg class="icon"><use href="#i-copy"></use></svg> Copy brief</button></div>
 </aside>
 </div>
 </div>
 </section>
+
 <section class="contact-strip" id="contact">
 <div class="container contact-strip-inner">
 <div><span class="eyebrow">Speak with the surveyor</span><h2>Talk to Registered Surveyor Hamid Adebare.</h2><p>Call or send the location, purpose and available documents on WhatsApp.</p></div>
@@ -342,8 +381,8 @@
 </main>
 <footer>
 <div class="container footer-grid">
-<div class="footer-brand"><img alt="" height="476" src="assets/img/hag-logo.png" width="648"/><div><b>HAMBARE GEOSURVEYS NIG. LTD.</b><span>Surveying · engineering measurement · spatial intelligence</span></div></div>
-<div><b>Services</b><a href="#services">Boundary survey</a><a href="#services">Topographic survey</a><a href="#services">Engineering survey</a><a href="#services">GIS &amp; remote sensing</a></div>
+<div class="footer-brand"><img alt="" height="476" src="assets/img/hag-logo.png" width="648"/><div><strong>HAMBARE GEOSURVEYS NIG. LTD.</strong><span>Surveying · engineering measurement · spatial intelligence</span><span class="footer-coord">07°58'N · 003°36'E · ISEYIN, OYO STATE</span></div></div>
+<div><b>Explore</b><a href="#services">Boundary survey</a><a href="#services">Topographic survey</a><a href="#services">Engineering survey</a><a href="#services">GIS &amp; remote sensing</a><a href="#approach">Our approach</a></div>
 <div><b>Contact</b><span>Registered Surveyor Hamid Adebare</span><a href="tel:+2348034784082">+234 803 478 4082</a><a class="wa-link" href="#">WhatsApp</a><span>Iseyin, Oyo State, Nigeria</span></div>
 <div><b>Company</b><a href="privacy.html">Privacy</a><a href="terms.html">Service terms</a><a href="assets/docs/Hambare-Capability-Statement.pdf" target="_blank">Capability statement</a></div>
 </div>
