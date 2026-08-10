@@ -225,8 +225,10 @@ h3{font-size:1.28rem}
 .field-section h2{color:#fff}
 .field-section .split-head p{color:#b7c7b8}
 .image-grid{display:grid;grid-template-columns:1.25fr .75fr;grid-template-rows:1fr 1fr;gap:16px;height:620px}
+.image-grid-2{grid-template-columns:1.4fr 1fr;grid-template-rows:1fr}
 .image-card{position:relative;overflow:hidden;background:var(--ink-2)}
 .image-card-large{grid-row:1/3}
+.image-grid-2 .image-card-large{grid-row:auto}
 .image-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
 .image-card:hover img{transform:scale(1.045)}
 .image-card-doc{background:#eef3f5}
@@ -456,9 +458,6 @@ footer:before{content:"";position:absolute;inset:0;opacity:.5;background-image:u
   .hero-copy>p{font-size:1rem}
   .hero-actions .button{width:100%}
   .hero-proof{grid-template-columns:1fr;gap:10px}
-  .shortcut-grid{grid-template-columns:1fr}
-  .shortcut-grid button{display:none}
-  .shortcut-grid button:first-child,.shortcut-grid button:nth-child(2){display:grid}
   .hero-inner{padding-bottom:200px}
   .service-grid{grid-template-columns:1fr}
   .service-card{min-height:auto}
