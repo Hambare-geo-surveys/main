@@ -306,38 +306,6 @@
   };
   $$('[data-carousel]').forEach(initialiseCarousel);
 
-  const guideVideo = $('#briefGuideVideo');
-  const guideSource = $('#briefGuideSource');
-  const guideFullscreen = $('#videoFullscreen');
-  const guideMediaQuery = window.matchMedia('(max-width:720px)');
-  const syncGuideMedia = () => {
-    if (!guideVideo || !guideSource) return;
-    const mobile = guideMediaQuery.matches;
-    const desired = guideVideo.dataset[mobile ? 'mobileSrc' : 'desktopSrc'];
-    const poster = guideVideo.dataset[mobile ? 'mobilePoster' : 'desktopPoster'];
-    if (poster) guideVideo.poster = poster;
-    const current = guideSource.getAttribute('src');
-    if (desired && current !== desired) {
-      const time = guideVideo.currentTime || 0;
-      const paused = guideVideo.paused;
-      guideSource.src = desired;
-      guideVideo.load();
-      guideVideo.addEventListener('loadedmetadata', () => {
-        if (time && Number.isFinite(guideVideo.duration)) guideVideo.currentTime = Math.min(time, guideVideo.duration - .2);
-        if (!paused) guideVideo.play().catch(() => {});
-      }, {once:true});
-    }
-  };
-  guideMediaQuery.addEventListener?.('change', syncGuideMedia);
-  syncGuideMedia();
-  guideFullscreen?.addEventListener('click', async () => {
-    if (!guideVideo) return;
-    try {
-      if (guideVideo.requestFullscreen) await guideVideo.requestFullscreen();
-      else if (guideVideo.webkitEnterFullscreen) guideVideo.webkitEnterFullscreen();
-    } catch { toast('Use the full-screen icon in the video controls.'); }
-  });
-
   const hero = $('.hero');
   const reticle = $('#heroReticle');
   const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)');
